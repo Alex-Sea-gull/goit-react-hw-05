@@ -4,6 +4,13 @@
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
+.link:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    text-decoration: underline;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+}
+
 .active {
     color: red;
     text-decoration: underline;
@@ -26,4 +33,6 @@
     background-color: #2f4f4f;
     padding: 20px;
     margin: 0;
+    border: 2px solid #4e5d5b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
