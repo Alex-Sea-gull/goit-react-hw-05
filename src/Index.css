@@ -13,8 +13,6 @@ html {
 
 body {
   background-color: var(--color-bg);
-  display: flex;
-  justify-content: center;
   text-align: center;
 }
 

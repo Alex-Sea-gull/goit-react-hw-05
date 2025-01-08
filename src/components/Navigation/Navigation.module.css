@@ -1,0 +1,29 @@
+.link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.active {
+    color: red;
+    text-decoration: underline;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.wrapper_nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #2f4f4f;
+    padding: 20px;
+    margin: 0;
+}
