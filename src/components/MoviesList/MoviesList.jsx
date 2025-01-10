@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import s from "./MoviesList.module.css";
 
@@ -11,10 +12,12 @@ const MoviesList = ({ movies, isLoading }) => {
           {movies.length > 0 ? (
             movies.map((item) => (
               <li key={item.id} className={s.movieItem}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                  alt={item.title}
-                />
+                <Link to={`/movies/${item.id}`}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    alt={item.title}
+                  />
+                </Link>
                 <h3>{item.title}</h3>
                 <p>Release: {item.release_date}</p>
                 <p>Vote average: {item.vote_average}</p>
