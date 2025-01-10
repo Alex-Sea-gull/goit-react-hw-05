@@ -1,4 +1,5 @@
 import Loader from "../Loader/Loader";
+import s from "./MoviesList.module.css";
 
 const MoviesList = ({ movies, isLoading }) => {
   return (
@@ -6,14 +7,13 @@ const MoviesList = ({ movies, isLoading }) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <ul>
+        <ul className={s.movies}>
           {movies.length > 0 ? (
             movies.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} className={s.movieItem}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                   alt={item.title}
-                  style={{ width: "300px" }}
                 />
                 <h3>{item.title}</h3>
                 <p>Release: {item.release_date}</p>
