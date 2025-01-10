@@ -1,34 +1,29 @@
 import { useEffect, useState } from "react";
 import { fetchTrendingMovies } from "../../services/api";
+import MoviesList from "../../components/MoviesList/MoviesList";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Функція отримання даних про фільми
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchTrendingMovies();
-      setMovies(data || []);
+      try {
+        const data = await fetchTrendingMovies();
+        setMovies(data || []); //дані або пустий масив
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     getData();
   }, []);
 
   return (
     <div>
-      <ul>
-        {movies.length > 0 ? (
-          movies.map((movie) => (
-            <li key={movie.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                style={{ width: "300px" }}
-              />
-            </li>
-          ))
-        ) : (
-          <p>Здесь будет лоадер...</p>
-        )}
-      </ul>
+      <MoviesList movies={movies} isLoading={isLoading} />
     </div>
   );
 };

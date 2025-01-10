@@ -4,19 +4,14 @@ const API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMjNjZTk4YzJkMjE3ZDRiYmU5NDBlNT
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 const fetchTrendingMovies = async () => {
-    try {
-        const response = await axios.get(`${BASE_URL}/trending/movie/day`, {
-            headers: {
-                Authorization: `Bearer ${API_KEY}`,
-            },
-        });
+    const { data } = await axios.get(`${BASE_URL}/trending/movie/day`, {
+        headers: {
+            Authorization: `Bearer ${API_KEY}`,
+        },
+    });
 
-        return response.data.results;
-
-    } catch (error) {
-        console.error("Ошибка при получении данных:", error);
-        return [];
-    }
+    return data.results;
 };
 
 export { fetchTrendingMovies };
+

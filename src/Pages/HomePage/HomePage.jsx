@@ -5,10 +5,11 @@ import MoviesPage from "../MoviesPage/MoviesPage";
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
 
+  // Функція отримання даних з API
   useEffect(() => {
     const getData = async () => {
       const data = await fetchTrendingMovies();
-      setMovies(data || []);
+      setMovies(data);
       console.log(data);
     };
     getData();
