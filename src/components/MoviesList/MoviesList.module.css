@@ -28,7 +28,8 @@
 
 .movieItem img {
     width: 100%;
-    height: auto;
+    /* height: 400px; */
+    object-fit: cover;
     border-bottom: 2px solid #ddd;
 }
 

@@ -10,7 +10,7 @@ const Navigation = () => {
   return (
     <div className={s.wrapper_nav}>
       <nav className={s.nav}>
-        <NavLink className={buildLinkClass} to="/home">
+        <NavLink className={buildLinkClass} to="/">
           Home
         </NavLink>
         <NavLink className={buildLinkClass} to="/movies">

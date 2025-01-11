@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
-import { fetchTrendingMovies } from "../../services/api";
+import { Field, Form, Formik } from "formik";
+import Loader from "../../components/Loader/Loader";
+import { fetchMoviesByTitle } from "../../services/api";
 import MoviesList from "../../components/MoviesList/MoviesList";
+import s from "./MoviesPage.module.css";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState("");
 
-  // Функція отримання даних про фільми
   useEffect(() => {
+    if (!query) return;
+
     const getData = async () => {
+      setIsLoading(true);
       try {
-        const data = await fetchTrendingMovies();
+        const data = await fetchMoviesByTitle(query);
+        console.log(data);
         setMovies(data || []); //дані або пустий масив
       } catch (error) {
         console.error(error);
@@ -19,11 +26,42 @@ const MoviesPage = () => {
       }
     };
     getData();
-  }, []);
+  }, [query]);
+
+  const onSubmit = (values) => {
+    console.log(values);
+    setQuery(values.query);
+  };
+
+  const initialValues = { query: "" };
 
   return (
     <div>
-      <MoviesList movies={movies} isLoading={isLoading} />
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <Form className={s.wrapperFormAction}>
+          <Field
+            className={s.inputMovie}
+            name="query"
+            type="text"
+            placeholder="Enter your movie"
+          />
+          <button className={s.buttonSearchMovie} type="submit">
+            Search movie
+          </button>
+        </Form>
+      </Formik>
+
+      {query && !isLoading && (
+        <>
+          {movies.length > 0 ? (
+            <MoviesList movies={movies} isLoading={isLoading} />
+          ) : (
+            <p className={s.notFoundQuery}> No movies found for {query}.</p>
+          )}
+        </>
+      )}
+
+      {isLoading && <Loader />}
     </div>
   );
 };

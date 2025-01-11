@@ -13,5 +13,18 @@ const fetchTrendingMovies = async () => {
     return data.results;
 };
 
-export { fetchTrendingMovies };
+
+const fetchMoviesByTitle = async (query) => {
+    const { data } = await axios.get(`${BASE_URL}/search/movie`, {
+        params: {
+            query: query,
+        },
+        headers: {
+            Authorization: `Bearer ${API_KEY}`,
+        },
+    });
+    return data.results;
+};
+
+export { fetchTrendingMovies, fetchMoviesByTitle };
 

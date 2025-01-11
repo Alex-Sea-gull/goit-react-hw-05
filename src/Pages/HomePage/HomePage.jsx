@@ -4,20 +4,26 @@ import MoviesList from "../../components/MoviesList/MoviesList";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Функція отримання даних з API
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchTrendingMovies();
-      setMovies(data);
-      console.log(data);
+      try {
+        const data = await fetchTrendingMovies();
+        setMovies(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     getData();
   }, []);
 
   return (
     <div>
-      <MoviesList movies={movies} />
+      <MoviesList movies={movies} isLoading={isLoading} />
     </div>
   );
 };
