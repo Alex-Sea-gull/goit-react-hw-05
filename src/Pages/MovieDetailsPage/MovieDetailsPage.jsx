@@ -5,8 +5,8 @@ const MovieDetailsPage = () => {
     <div>
       <h1>MovieDetailsPage</h1>
       <nav>
-        <NavLink to="movieCast">MovieCast</NavLink>
-        <NavLink to="movieReviews">MovieReviews</NavLink>
+        <NavLink to="movieCast">Cast</NavLink>
+        <NavLink to="movieReviews">Reviews</NavLink>
       </nav>
       <Outlet />
     </div>

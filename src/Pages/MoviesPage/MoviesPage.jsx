@@ -4,11 +4,13 @@ import Loader from "../../components/Loader/Loader";
 import { fetchMoviesByTitle } from "../../services/api";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import s from "./MoviesPage.module.css";
+import { useSearchParams } from "react-router-dom";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
 
   useEffect(() => {
     if (!query) return;
@@ -30,10 +32,10 @@ const MoviesPage = () => {
 
   const onSubmit = (values) => {
     console.log(values);
-    setQuery(values.query);
+    setSearchParams({ query: values.query });
   };
 
-  const initialValues = { query: "" };
+  const initialValues = { query: query };
 
   return (
     <div>
