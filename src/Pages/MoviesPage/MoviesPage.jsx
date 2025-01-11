@@ -10,7 +10,7 @@ const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get("query");
+  const query = searchParams.get("query") || "";
 
   useEffect(() => {
     if (!query) return;
@@ -32,14 +32,16 @@ const MoviesPage = () => {
 
   const onSubmit = (values) => {
     console.log(values);
+    if (!values.query) {
+      setSearchParams({});
+      return;
+    }
     setSearchParams({ query: values.query });
   };
 
-  const initialValues = { query: query };
-
   return (
     <div>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Formik initialValues={{ query }} onSubmit={onSubmit}>
         <Form className={s.wrapperFormAction}>
           <Field
             className={s.inputMovie}
