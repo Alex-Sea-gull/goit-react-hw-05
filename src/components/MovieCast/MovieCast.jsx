@@ -6,17 +6,17 @@ import s from "./MovieCast.module.css";
 
 const MovieCast = () => {
   const { moviesId } = useParams();
-  const [movieCast, setMovieCast] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [cast, setCast] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getMovieCast = async () => {
       setIsLoading(true);
       try {
         const data = await getCast(moviesId);
-        setMovieCast(data);
+        setCast(data);
       } catch (error) {
-        console.error("Error fetching movie cast:", error);
+        console.log(error);
       } finally {
         setIsLoading(false);
       }
@@ -31,8 +31,8 @@ const MovieCast = () => {
     <div className={s.wrapperActor}>
       {isLoading ? (
         <Loader />
-      ) : movieCast && movieCast.length > 0 ? (
-        movieCast.map((actor) => (
+      ) : cast && cast.length > 0 ? (
+        cast.map((actor) => (
           <div className={s.idActor} key={actor.id}>
             {actor.profile_path && (
               <img
