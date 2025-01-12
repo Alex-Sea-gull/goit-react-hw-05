@@ -4,7 +4,7 @@
     gap: 20px;
     width: 100%;
     max-width: 1200px;
-    margin: 30px auto;
+    margin: 10px auto;
     padding: 0 10px;
     background-color: #6fc272;
     border-radius: 15px;
@@ -103,9 +103,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-flex;
     align-items: center;
-    position: fixed;
-    right: 50px;
-    top: 62px;
+
 }
 
 .goBack:hover {
