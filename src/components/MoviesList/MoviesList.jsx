@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import s from "./MoviesList.module.css";
 
 const MoviesList = ({ movies, isLoading }) => {
+  const location = useLocation();
+
   return (
     <div>
       {isLoading ? (
@@ -14,6 +16,7 @@ const MoviesList = ({ movies, isLoading }) => {
             .map((item) => (
               <li key={item.id} className={s.movieItem}>
                 <NavLink
+                  state={location}
                   to={`/movies/${item.id}`}
                   onClick={() => console.log("Item ID", item.id)}
                 >
