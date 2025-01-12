@@ -20,7 +20,7 @@ const MoviesPage = () => {
       try {
         const data = await fetchMoviesByTitle(query);
         console.log(data);
-        setMovies(data || []); //дані або пустий масив
+        setMovies(data || []);
       } catch (error) {
         console.error(error);
       } finally {
