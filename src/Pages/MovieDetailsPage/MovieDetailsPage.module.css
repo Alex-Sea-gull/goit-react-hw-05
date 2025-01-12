@@ -90,3 +90,30 @@
     letter-spacing: 1px;
     text-decoration: underline;
 }
+
+.goBack {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 8px;
+    background-color: #e69178;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    position: fixed;
+    right: 50px;
+    top: 62px;
+}
+
+.goBack:hover {
+    background-color: #b93b15;
+    border: 1px solid grey;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 1.2);
+    transform: scale(1.1);
+    color: white;
+    letter-spacing: 1px;
+    text-decoration: underline;
+}
