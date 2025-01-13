@@ -8,6 +8,7 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "./components/Loader/Loader";
+import GoUpButton from "./components/GoUpButton/GoUpButton";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <GoUpButton />
     </>
   );
 };
