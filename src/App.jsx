@@ -9,11 +9,11 @@ import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "./components/Loader/Loader";
 
-const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
-const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
+const HomePage = lazy(() => import("./page/HomePage/HomePage"));
+const NotFoundPage = lazy(() => import("./page/NotFoundPage/NotFoundPage"));
+const MoviesPage = lazy(() => import("./page/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() =>
-  import("./pages/MovieDetailsPage/MovieDetailsPage")
+  import("./page/MovieDetailsPage/MovieDetailsPage")
 );
 const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
 const MovieReviews = lazy(() =>
