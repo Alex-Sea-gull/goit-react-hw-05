@@ -42,3 +42,10 @@
 .characterActor {
     font-weight: normal;
 }
+
+.noImage {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}

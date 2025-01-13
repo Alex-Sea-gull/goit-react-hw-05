@@ -3,6 +3,7 @@ import { getCast } from "../../services/api";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import s from "./MovieCast.module.css";
+import noPhotos from "../../assets/noPhotos.svg";
 
 const MovieCast = () => {
   const { moviesId } = useParams();
@@ -34,12 +35,14 @@ const MovieCast = () => {
       ) : cast && cast.length > 0 ? (
         cast.map((actor) => (
           <div className={s.idActor} key={actor.id}>
-            {actor.profile_path && (
+            {actor.profile_path ? (
               <img
                 className={s.imgActor}
                 src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
                 alt={actor.name}
               />
+            ) : (
+              <img className={s.noImage} src={noPhotos} alt="No Image" />
             )}
             <div className={s.informActer}>
               <p className={s.nameActor}>
